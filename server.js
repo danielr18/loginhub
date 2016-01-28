@@ -13,7 +13,7 @@ var authTwitter = require('./auth/twitter');
 var authFacebook = require('./auth/facebook');
 var mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost:27017/tester');
+mongoose.connect('mongodb://admin:admin@apollo.modulusmongo.net:27017/wyjoPo8d');
 mongoose.connection.on('error', function(err) {
   console.log('Error: Could not connect to MongoDB. Did you forget to run `mongod`?'.red);
 });
