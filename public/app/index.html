@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="LoginApp">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
+  <title>Login Hub</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="assets/libs/materialize/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
+  <link rel="stylesheet" href="assets/libs/font-awesome-4.5.0/css/font-awesome.min.css"><!--  Scripts-->
+  <link href="app/css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
+  <script src="assets/libs/jquery/jquery.js"></script>
+  <script src="assets/libs/materialize/js/materialize.js"></script>
+  <script src="assets/libs/angular/angular.min.js"></script>
+  <script src="assets/libs/angular/angular-ui-router.min.js"></script>
+  <script src="app/js/init.js"></script>
+  <script src="app/controllers/MainCtrl.js"></script>
+  <script src="app/services/account.js"></script>
+  <script src="assets/libs/satellizer/satellizer.min.js"></script>
+</head>
+
+<body>
+  <nav class="light-blue lighten-1" role="navigation">
+    <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Login Hub</a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="#">Login</a></li>
+        <li><a href="#">Sign Up</a></li>
+      </ul>
+
+      <ul id="nav-mobile" class="side-nav">
+        <li><a href="#">Login</a></li>
+        <li><a href="#">Sign Up</a></li>
+      </ul>
+
+      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+    </div>
+  </nav>
+
+  <!--Angular Routes -->
+  <div ui-view></div>
+
+</body>
+
+</html>
