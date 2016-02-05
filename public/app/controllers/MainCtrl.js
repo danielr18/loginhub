@@ -4,13 +4,17 @@ app.config(function($stateProvider, $urlRouterProvider, $authProvider) {
     $stateProvider
         .state('home', {
             url: '/',
-            controller: 'HomeCtrl',
+            controller: 'NavbarCtrl',
             templateUrl: 'app/views/home.html'
         })
         .state('login', {
             url: '/login',
             controller: 'LoginCtrl',
             templateUrl: 'app/views/login.html'
+        })
+        .state('logout', {
+            url: '/logout',
+            controller: 'LogoutCtrl'
         })
         .state('signup', {
             url: '/signup',
@@ -50,3 +54,17 @@ app.controller('LoginCtrl', function($scope, $auth, $location, Account) {
             });
     };
 });
+
+app.controller('NavbarCtrl', function($scope, $auth) {
+    $scope.isAuthenticated = function() {
+      return $auth.isAuthenticated();
+    };
+});
+
+app.controller('LogoutCtrl', function($location, $auth) {
+    if (!$auth.isAuthenticated()) { return; }
+    $auth.logout()
+      .then(function() {
+        $location.path('/');
+      });
+  });
