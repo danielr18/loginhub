@@ -9,8 +9,12 @@ var config = require('./config');
 var moment = require('moment');
 var port = process.env.PORT || 8080;
 var path = require('path');
+var middleware = require('./middleware/middleware')
+var token = require('./token')
 var authTwitter = require('./auth/twitter');
+var authAccount = require('./auth/account');
 var authFacebook = require('./auth/facebook');
+var authLocal = require('./auth/local');
 var mongoose = require('mongoose');
 
 mongoose.connect('mongodb://admin:admin@apollo.modulusmongo.net:27017/wyjoPo8d');
@@ -33,58 +37,13 @@ app.use(function(req, res, next) {
 app.use(morgan('dev'));
 app.use(cors());
 
-function ensureAuthenticated(req, res, next) {
-  if (!req.headers.authorization) {
-    return res.status(401).send({ message: 'Please make sure your request has an Authorization header' });
-  }
-  var token = req.headers.authorization.split(' ')[1];
-
-  var payload = null;
-  try {
-    payload = jwt.decode(token, config.TOKEN_SECRET);
-  }
-  catch (err) {
-    return res.status(401).send({ message: err.message });
-  }
-
-  if (payload.exp <= moment().unix()) {
-    return res.status(401).send({ message: 'Token has expired' });
-  }
-  req.user = payload.sub;
-  next();
-}
-
 app.use(express.static(__dirname + '/public'));
 
 app.get("/", function(req, res) {
   res.sendFile(path.join(__dirname + '/public/app/index.html'));
 });
 
-app.use('/auth', authTwitter, authFacebook);
-
-app.get('/api/me', ensureAuthenticated, function(req, res) {
-  User.findById(req.user, function(err, user) {
-    res.send(user);
-  });
-});
-
-/*
- |--------------------------------------------------------------------------
- | PUT /api/me
- |--------------------------------------------------------------------------
- */
-app.put('/api/me', ensureAuthenticated, function(req, res) {
-  User.findById(req.user, function(err, user) {
-    if (!user) {
-      return res.status(400).send({ message: 'User not found' });
-    }
-    user.displayName = req.body.displayName || user.displayName;
-    user.email = req.body.email || user.email;
-    user.save(function(err) {
-      res.status(200).end();
-    });
-  });
-});
+app.use('/auth', authLocal, authTwitter, authFacebook, authAccount);
 
 app.listen(port);
 

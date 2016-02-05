@@ -5,21 +5,21 @@
         <div class="row center">
             <div class="col l6 m8 s10 offset-l3 offset-m2 offset-s1 card-panel grey lighten-4 login">
                 <h5>Sign Up</h5>
-                <form method="post" ng-submit="login()" name="loginform">
+                <form method="post" ng-submit="signup()" name="signupForm">
                     <div class="input-field col l4 m4 s12 offset-l2 offset-m2">
-                        <input type="text">
+                        <input type="text" ng-model="user.firstname">
                         <label>First Name</label>
                     </div>
                     <div class="input-field col l4 m4 s12">
-                        <input type="text">
+                        <input type="text" ng-model="user.lastname">
                         <label>Last Name</label>
                     </div>
                     <div class="input-field col l8 m8 s12 offset-l2 offset-m2">
-                        <input type="email" class="validate">
+                        <input type="email" class="validate" ng-model="user.email">
                         <label>Email</label>
                     </div>
                     <div class="input-field col l8 m8 s12 offset-l2 offset-m2">
-                        <input type="password">
+                        <input type="password" ng-model="user.password">
                         <label>Password</label>
                     </div>
                     <div class="input-field col l8 m8 s12 offset-l2 offset-m2">

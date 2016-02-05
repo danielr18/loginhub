@@ -1,10 +1,10 @@
 app.factory('Account', function($http) {
     return {
       getProfile: function() {
-        return $http.get('/api/me');
+        return $http.get('/auth/me');
       },
       updateProfile: function(profileData) {
-        return $http.put('/api/me', profileData);
+        return $http.put('/auth/me', profileData);
       }
     };
   });

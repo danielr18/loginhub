@@ -26,6 +26,9 @@ body {
 .oauth {
   margin-top: 10px;
 }
+.no-padding {
+  padding: 0px;
+}
 .btn {
   overflow: hidden;
 }

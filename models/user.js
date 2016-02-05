@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 var moment = require('moment');
-var bcrypt = require('bcrypt-nodejs');
+var bcrypt = require('bcryptjs');
 
 var userSchema = new mongoose.Schema({
   email: {
@@ -12,7 +12,8 @@ var userSchema = new mongoose.Schema({
     type: String,
     select: false
   },
-  displayName: String,
+  firstname: String,
+  lastname: String,
   picture: String,
   facebook: String,
   twitter: String
