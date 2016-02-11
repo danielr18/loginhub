@@ -40,20 +40,6 @@ app.config(function($stateProvider, $urlRouterProvider, $authProvider) {
     });
 });
 
-app.controller('LoginCtrl', function($scope, $auth, $location, Account) {
-    $scope.authenticate = function(provider) {
-        $auth.authenticate(provider)
-            .then(function(data) {
-                console.log(data);
-                $location.path('/profile');
-            })
-            .catch(function(error) {
-                if (error) {
-                    console.log(error);
-                }
-            });
-    };
-});
 
 app.controller('NavbarCtrl', function($scope, $auth) {
     $scope.isAuthenticated = function() {

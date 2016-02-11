@@ -9,10 +9,12 @@ var localAuth = express.Router();
 localAuth.post("/login", function(req, res) {
   User.findOne({ email: req.body.email }, '+password', function(err, user) {
       if (!user) {
+        console.log("No existe el user");
         return res.status(401).send({ message: 'Invalid email and/or password' });
       }
       user.comparePassword(req.body.password, function(err, isMatch) {
         if (!isMatch) {
+          console.log("No hizo match");
           return res.status(401).send({ message: 'Invalid email and/or password' });
         }
         res.send({ token: createJWT(user) });

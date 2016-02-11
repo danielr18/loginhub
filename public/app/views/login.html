@@ -7,15 +7,15 @@
         <h5>LOGIN</h5>
         <form method="post" ng-submit="login()" name="loginform">
           <div class="input-field col l8 m8 s12 offset-l2 offset-m2">
-            <input type="email" class="validate">
+            <input type="email" class="validate" ng-model="user.email">
             <label>Email</label>
           </div>
           <div class="input-field col l8 m8 s12 offset-l2 offset-m2">
-            <input type="password">
+            <input type="password" class="validate" ng-model="user.password">
             <label>Password</label>
           </div>
           <div class="input-field col l8 m8 s12 offset-l2 offset-m2">
-            <button class="login-button btn waves-effect waves-light z-depth-0" type="submit" name="action">Sign In</button>
+            <button class="login-button btn waves-effect waves-light z-depth-0" type="submit" name="action">Log In</button>
           </div>
           <div class="input-field col s8 offset-s2">
             <h6 class="center-align">OR</h6>
@@ -27,7 +27,7 @@
             <span class="fa-stack fa-lg">
               <i class="fa fa-facebook fa-stack-1x"></i>
             </span>
-            Sign In with Facebook
+            Log In with Facebook
           </button>
         </div>
         <div class="col l8 m8 s12 offset-l2 offset-m2">
@@ -36,7 +36,7 @@
             <span class="fa-stack fa-lg">
               <i class="fa fa-twitter fa-stack-1x"></i>
             </span>
-            Sign In with Twitter
+            Log In with Twitter
           </button>
         </div>
         <div class="row center">

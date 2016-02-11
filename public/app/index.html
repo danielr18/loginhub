@@ -19,11 +19,12 @@
   <script src="app/controllers/MainCtrl.js"></script>
   <script src="app/controllers/signup.js"></script>
   <script src="app/controllers/profile.js"></script>
+  <script src="app/controllers/login.js"></script>
   <script src="app/services/account.js"></script>
   <script src="assets/libs/satellizer/satellizer.min.js"></script>
 </head>
 
-<body>
+<body ng-controller="NavbarCtrl">
   <nav class="light-blue lighten-1" role="navigation">
     <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Login Hub</a>
       <ul class="right hide-on-med-and-down" ng-if="isAuthenticated()">
