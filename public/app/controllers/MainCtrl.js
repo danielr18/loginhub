@@ -1,6 +1,7 @@
+//Angular main controller.
 var app = angular.module('LoginApp', ['ui.router', 'satellizer']);
 app.config(function($stateProvider, $urlRouterProvider, $authProvider) {
-    //routes config
+//Routes configuration.
     $stateProvider
         .state('home', {
             url: '/',
@@ -29,7 +30,7 @@ app.config(function($stateProvider, $urlRouterProvider, $authProvider) {
 
     $urlRouterProvider.otherwise('/');
 
-    //satellizer config
+//Satellizer config.
     $authProvider.httpInterceptor = true;
     $authProvider.tokenPrefix = "loginhub";
     $authProvider.facebook({

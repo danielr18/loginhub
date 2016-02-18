@@ -1,8 +1,8 @@
+//Twitter authorization configuration.
 var qs = require('qs');
 var request = require('request');
 var User = require('../models/user');
 var express = require("express");
-var app = express();
 var jwt = require('jwt-simple');
 var config = require('../config');
 var createJWT = require('../token');

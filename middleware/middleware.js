@@ -1,3 +1,4 @@
+//Middleware for veryfication of header.
 var jwt = require('jwt-simple');
 var moment = require('moment');
 var config = require('../config');

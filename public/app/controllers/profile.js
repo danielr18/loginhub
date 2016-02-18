@@ -1,3 +1,4 @@
+//Angular profile controller.
 app.controller('ProfileCtrl', function($scope, $auth, Account) {
   $scope.getProfile = function() {
         Account.getProfile()

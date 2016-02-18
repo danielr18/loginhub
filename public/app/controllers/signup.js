@@ -1,3 +1,4 @@
+//Angular Sign Up controller.
 app.controller('SignupCtrl', function($scope, $location, $auth) {
   $scope.signup = function() {
         $auth.signup($scope.user)

@@ -14,6 +14,13 @@
             <input type="password" class="validate" ng-model="user.password">
             <label>Password</label>
           </div>
+          <div>
+            <div class= "uiInputLabel clearfix uiInputLabelLegacy">
+              <input id="persist_box" name="persistent" value="1" tabindex="3" class="uiInputLabelInput uiInputLabelCheckbox" type="checkbox">
+              <label class="uiInputLabelLabel" for="persist_box">Stay signed</label>
+            </div>
+            <input type="hidden" value="0" name="default_persistent"></input>
+          </div>
           <div class="input-field col l8 m8 s12 offset-l2 offset-m2">
             <button class="login-button btn waves-effect waves-light z-depth-0" type="submit" name="action">Log In</button>
           </div>

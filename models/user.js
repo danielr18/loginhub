@@ -1,3 +1,4 @@
+//User schema.
 var mongoose = require('mongoose');
 var moment = require('moment');
 var bcrypt = require('bcryptjs');
@@ -14,11 +15,17 @@ var userSchema = new mongoose.Schema({
   },
   firstname: String,
   lastname: String,
+  address: String,
+  ID: {
+    type: Number,
+    unique: true
+  },
   picture: String,
   facebook: String,
   twitter: String
 });
 
+//Saving.
 userSchema.pre('save', function(next) {
   var user = this;
   if (!user.isModified('password')) {
@@ -32,6 +39,7 @@ userSchema.pre('save', function(next) {
   });
 });
 
+//Password comparation method.
 userSchema.methods.comparePassword = function(password, done) {
   bcrypt.compare(password, this.password, function(err, isMatch) {
     done(err, isMatch);
