@@ -12,5 +12,8 @@ module.exports = {
 
   // OAuth 1.0
   TWITTER_KEY: process.env.TWITTER_KEY || 'gbe5shiQPZX2NnJXsZAU8saWS',
-  TWITTER_SECRET: process.env.TWITTER_SECRET || 'ooR5gNfLM4GPdzDAOZAV8q3tPn2w49rMgQTMyrJRtL5MI8JplG'
+  TWITTER_SECRET: process.env.TWITTER_SECRET || 'ooR5gNfLM4GPdzDAOZAV8q3tPn2w49rMgQTMyrJRtL5MI8JplG',
+
+  //Database
+  DATABASE_URL: "mongodb://admin:admin@apollo.modulusmongo.net:27017/wyjoPo8d"
 };

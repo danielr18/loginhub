@@ -12,9 +12,10 @@ var authFacebook = require('./auth/facebook');
 var authLocal = require('./auth/local');
 var mongoose = require('mongoose');
 var moment = require('moment');
+var config = require('./config') //Rename config.example to config
 
 //Connection to database
-mongoose.connect('mongodb://admin:admin@apollo.modulusmongo.net:27017/wyjoPo8d');
+mongoose.connect(config.DATABASE_URL);
 mongoose.connection.on('error', function(err) {
   console.log('Error: Could not connect to MongoDB. Did you forget to run `mongod`?'.red);
 });
