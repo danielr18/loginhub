@@ -18,6 +18,6 @@ module.exports = {
   DATABASE_URL: "mongodb://user:pass@url:27017/database"
 
   //Mailing
-  LOGINHUB_EMAIL: "GMAIL ADDRESS",
+  LOGINHUB_EMAIL: "GMAIL USERNAME",
   LOGINGUB_EMAIL_PASSWORD: "GMAIL PASSWORD"
 };
