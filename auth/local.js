@@ -4,6 +4,7 @@ var mongoose = require('mongoose');
 var User = require('../models/user');
 var createJWT = require('../token');
 var express = require("express");
+var mailer = require('../mailer');
 var config = require('../config') //Rename config.example to config
 
 var localAuth = express.Router();
@@ -59,28 +60,10 @@ localAuth.post("/signup", function(req, res) {
       res.send({
         token: createJWT(result)
       });
-      var name = req.body.firstname;
-      var from = "Loginhub";
-      var message = "Se ha registrado en LoginHub, gracias por usar nuestros servicios";
-      var to = req.body.email;
-      var smtpTransport = nodemailer.createTransport("SMTP", {
-        service: "Gmail",
-        auth: {
-          user: config.LOGINHUB_EMAIL,
-          pass: config.LOGINGUB_EMAIL_PASSWORD
-        }
-      });
-      var mailOptions = {
-        from: from,
-        to: to,
-        subject: name + ', bienvenido a Loginhub',
-        text: message
+      var mailData = {
+        email: req.body.email
       }
-      smtpTransport.sendMail(mailOptions, function(error, response) {
-        if (error) {
-          console.log(error);
-        }
-      });
+      mailer.testEmail(mailData);
     });
   });
 });
