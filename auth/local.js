@@ -63,7 +63,7 @@ localAuth.post("/signup", function(req, res) {
       var mailData = {
         email: req.body.email
       }
-      mailer.testEmail(mailData);
+      mailer.verificationEmail(mailData);
     });
   });
 });
