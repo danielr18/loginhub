@@ -1,5 +1,5 @@
 //Angular main controller.
-var app = angular.module('LoginApp', ['ui.router', 'satellizer']);
+var app = angular.module('LoginApp', ['ui.router', 'satellizer', 'ngMessages']);
 app.config(function($stateProvider, $urlRouterProvider, $authProvider) {
 //Routes configuration.
     $stateProvider
