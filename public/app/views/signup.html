@@ -1,3 +1,11 @@
+<script>
+    $(document).ready(function() {
+        $('.tooltipped').tooltip({
+            delay: 50
+        });
+    });
+</script>
+
 <div class="section no-pad-bot" id="index-banner">
     <div class="container">
         <br>
@@ -15,11 +23,11 @@
                         <label>Last Name</label>
                     </div>
                     <div class="input-field col l8 m8 s12 offset-l2 offset-m2">
-                        <input type="email" class="validate" ng-model="user.email">
+                        <input type="email" class="validate" ng-model="user.email" required>
                         <label>Email</label>
                     </div>
                     <div class="input-field col l8 m8 s12 offset-l2 offset-m2">
-                        <input type="password" ng-model="user.password">
+                        <input class="tooltipped" type="password" name="password" ng-model="user.password" data-position="bottom" data-delay="50" data-tooltip="{{(signupForm.password.$dirty)? 'I am tooltip' : '555'}}" required>
                         <label>Password</label>
                     </div>
                     <div class="input-field col l8 m8 s12 offset-l2 offset-m2">
@@ -30,15 +38,13 @@
                         <input type="text" ng-model="user.address">
                         <label>Address</label>
                     </div>
-
-
                     <div class="input-field col l8 m8 s12 offset-l2 offset-m2">
                         <button class="login-button btn waves-effect waves-light z-depth-0" type="submit" name="action">Sign Up</button>
                     </div>
                 </form>
 
                 <div class="input-field col s8 offset-s2">
-                  <h6 class="center-align">OR</h6>
+                    <h6 class="center-align">OR</h6>
                 </div>
                 <div class="col l8 m8 s12 offset-l2 offset-m2">
                     <button class="login-button btn indigo waves-effect waves-light z-depth-0" type="submit" name="action" ng-click="authenticate('facebook')">

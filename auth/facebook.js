@@ -64,7 +64,7 @@ facebookRoute.post('/facebook', function(req, res) {
             user.picture = user.picture || 'https://graph.facebook.com/v2.3/' + profile.id + '/picture?type=large';
             user.displayName = user.displayName || profile.name;
             user.save(function() {
-              var token = createJWT(user);
+              var token = createJWT.auth(user);
               res.send({
                 token: token
               });
@@ -77,7 +77,7 @@ facebookRoute.post('/facebook', function(req, res) {
           facebook: profile.id
         }, function(err, existingUser) {
           if (existingUser) {
-            var token = createJWT(existingUser);
+            var token = createJWT.auth(existingUser);
             return res.send({
               message: "User gathered from DB",
               token: token
@@ -88,7 +88,7 @@ facebookRoute.post('/facebook', function(req, res) {
           user.picture = 'https://graph.facebook.com/' + profile.id + '/picture?type=large';
           user.displayName = profile.name;
           user.save(function() {
-            var token = createJWT(user);
+            var token = createJWT.auth(user);
             res.send({
               message: "New user created in DB",
               token: token

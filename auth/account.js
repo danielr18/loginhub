@@ -1,8 +1,7 @@
 //Account authorization basic configuration.
 var mongoose = require('mongoose');
 var User = require('../models/user');
-var middleware = require('../middleware/middleware')
-var createJWT = require('../token');
+var middleware = require('../middleware/middleware');
 var express = require("express");
 
 var authAccount = express.Router();

@@ -5,7 +5,7 @@ var User = require('../models/user');
 var createJWT = require('../token');
 var express = require("express");
 var mailer = require('../mailer');
-var config = require('../config') //Rename config.example to config
+var config = require('../config'); //Rename config.example to config
 
 var localAuth = express.Router();
 
@@ -26,7 +26,7 @@ localAuth.post("/login", function(req, res) {
         });
       }
       res.send({
-        token: createJWT(user)
+        token: createJWT.verify(user)
       });
     });
   });
@@ -58,12 +58,12 @@ localAuth.post("/signup", function(req, res) {
         });
       }
       res.send({
-        token: createJWT(result)
+        token: createJWT.auth(result)
       });
-      var mailData = {
+      mailer.verificationEmail({
+        name: req.body.firstname,
         email: req.body.email
-      }
-      mailer.verificationEmail(mailData);
+      });
     });
   });
 });

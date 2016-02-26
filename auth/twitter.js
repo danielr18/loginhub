@@ -88,7 +88,7 @@ twitterRoute.post('/twitter', function(req, res) {
               user.picture = user.picture || profile.profile_image_url.replace('_normal', '');
               user.save(function(err) {
                 res.send({
-                  token: createJWT(user)
+                  token: createJWT.auth(user)
                 });
               });
             });
@@ -100,7 +100,7 @@ twitterRoute.post('/twitter', function(req, res) {
           }, function(err, existingUser) {
             if (existingUser) {
               return res.send({
-                token: createJWT(existingUser),
+                token: createJWT.auth(existingUser),
               });
             }
 
@@ -110,7 +110,7 @@ twitterRoute.post('/twitter', function(req, res) {
             user.picture = profile.profile_image_url.replace('_normal', '');
             user.save(function() {
               res.send({
-                token: createJWT(user)
+                token: createJWT.auth(user)
               });
             });
           });

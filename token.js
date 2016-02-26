@@ -4,7 +4,7 @@ var moment = require('moment');
 var config = require('./config');
 var User = require('./models/user');
 
-exports.authenticationCreateJWT = function(user) {
+exports.auth = function(user) {
   var payload = {
     sub: user._id,
     iat: moment().unix(), //Creation date.
@@ -14,21 +14,23 @@ exports.authenticationCreateJWT = function(user) {
 };
 
 //------------------------------------------------------------------------------
-exports.verificationCreateJWT = function(user) {
+exports.verify = function(user) {
   var payload = {
     sub: user._id,
     iat: moment().unix(),
+    exp: moment().add(4, 'hours').unix(), //Expire date (can be changed to convenience).
     key: "SECRETKEY"
   };
   return jwt.encode(payload, config.TOKEN_SECRET);
 };
 
 //------------------------------------------------------------------------------
-exports.passChangeCreateJWT = function(user) {
+exports.recovery = function(user) {
   var payload = {
     sub: user._id,
     iat: moment().unix(),
-    key: "SECRETKEY" 
+    exp: moment().add(20, 'minutes').unix(), //Expire date (can be changed to convenience).
+    key: "SECRETKEY"
   };
   return jwt.encode(payload, config.TOKEN_SECRET);
 };
