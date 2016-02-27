@@ -23,9 +23,7 @@ exports.verificationEmail = function(data){
       from: 'LoginHub Team <homeboxhoteltest@gmail.com>', // sender address
       to: data.email, // list of receivers
       subject: 'Welcome to LoginHub', // Subject line
-      text: 'You have joined Loginhub almost completely! To verify your account, enter this link:http//localhost:8080'
-      + generatedLink.verificationCreateJWT, // plaintext body
-      html: '<b>Hello world</b>' // html body
+      text: 'You have joined Loginhub almost completely! To verify your account, enter this link:http//localhost:8080' + generatedLink.verificationCreateJWT, // plaintext body
   };
   // send mail with defined transport object
   transporter.sendMail(mailOptions, function(error, info){

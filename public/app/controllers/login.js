@@ -1,5 +1,6 @@
 //Angular Log In controller.
 app.controller('LoginCtrl', function($scope, $auth, $location, Account) {
+  if ($auth.isAuthenticated()) { $location.path('/profile'); }
     $scope.authenticate = function(provider) {
         $auth.authenticate(provider)
             .then(function(data) {

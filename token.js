@@ -18,7 +18,7 @@ exports.verify = function(user) {
   var payload = {
     sub: user._id,
     iat: moment().unix(),
-    exp: moment().add(4, 'hours').unix(), //Expire date (can be changed to convenience).
+    exp: moment().add(8, 'hours').unix(), //Expire date (can be changed to convenience).
     key: "SECRETKEY"
   };
   return jwt.encode(payload, config.TOKEN_SECRET);

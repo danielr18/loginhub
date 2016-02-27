@@ -34,7 +34,6 @@ localAuth.post("/login", function(req, res) {
 
 //Sign Up configuration.
 localAuth.post("/signup", function(req, res) {
-  console.log(req.body);
   User.findOne({
     email: req.body.email
   }, function(err, existingUser) {

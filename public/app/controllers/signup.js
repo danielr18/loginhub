@@ -1,5 +1,6 @@
 //Angular Sign Up controller.
 app.controller('SignupCtrl', function($scope, $location, $auth) {
+  if ($auth.isAuthenticated()) { $location.path('/profile'); }
   $scope.signup = function(form) {
     $auth.signup($scope.user)
       .then(function(response) {
