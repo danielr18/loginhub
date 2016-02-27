@@ -1,0 +1,67 @@
+<div class="section no-pad-bot" id="index-banner">
+  <div class="container">
+    <br>
+    <br>
+    <div class="row center">
+      <div class="col l6 m8 s10 offset-l3 offset-m2 offset-s1 card-panel grey lighten-4 login">
+        <div class="container">
+          <h5>PROFILE</h5>
+          <div class="row valign-wrapper">
+              <div class="col s4">
+                <img ng-src="{{user.picture || 'http://placehold.it/100x100'}}" alt="" class="circle responsive-img">
+              </div>
+              <div class="col s8">
+                <h5>{{user.firstname}} {{user.lastname}}</h5>
+                <h6>{{user.email}}</h6>
+                <h6 ng-show="user.verified">You are verified</h6>
+                <h6 ng-hide="user.verified">You need to verify your email</h6>
+              </div>
+          </div>
+          <div class="left-align">
+            <h5>Accounts</h5>
+            <div class="col l8 m8 s12 no-padding">
+              <button class="login-button btn indigo waves-effect waves-light z-depth-0"
+                      type="submit" name="action" ng-click="link('facebook')" ng-if="!user.facebook">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-facebook fa-stack-1x"></i>
+                </span>
+                Link Facebook
+              </button>
+              <button class="login-button btn indigo waves-effect waves-light z-depth-0"
+                      type="submit" name="action" ng-click="unlink('facebook')" ng-if="user.facebook">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-facebook fa-stack-1x"></i>
+                </span>
+                Unlink Facebook
+              </button>
+            </div>
+            <div class="col l8 m8 s12 no-padding">
+              <button class="login-button oauth btn blue lighten-1 waves-effect waves-light z-depth-0"
+                      type="submit" name="action" ng-click="link('twitter')" ng-if="!user.twitter">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-twitter fa-stack-1x"></i>
+                </span>
+                Link Twitter
+              </button>
+              <button class="login-button oauth btn blue lighten-1 waves-effect waves-light z-depth-0"
+                      type="submit" name="action" ng-click="unlink('twitter')" ng-if="user.twitter">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-twitter fa-stack-1x"></i>
+                </span>
+                Unlink Twitter
+              </button>
+            </div>
+          </div>
+          <div class="row center">
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row center">
+
+    </div>
+    <br>
+    <br>
+  </div>
+</div>

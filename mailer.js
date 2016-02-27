@@ -22,7 +22,7 @@ exports.verificationEmail = function(data){
       from: 'LoginHub Team <homeboxhoteltest@gmail.com>', // sender address
       to: data.email, // list of receivers
       subject: 'Welcome to LoginHub', // Subject line
-      html: 'Hi ' + data.name + ', you have joined Loginhub almost completely! To verify your account, go to this link: <a href="http://localhost:8080/auth/verify/?token=' + escape(data.token) + "&key=" + escape(data.key) + '">Verify Email</a>'
+      html: 'Hi ' + data.name + ', you have joined Loginhub almost completely! To verify your account, go to this link: <a href="http://localhost:8080/#/verify_email?token=' + escape(data.token) + "&key=" + escape(data.key) + '">Verify Email</a>'
     };
   // send mail with defined transport object
   transporter.sendMail(mailOptions, function(error, info){

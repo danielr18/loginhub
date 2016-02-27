@@ -5,6 +5,9 @@ app.factory('Account', function($http) {
       },
       updateProfile: function(profileData) {
         return $http.put('/auth/me', profileData);
+      },
+      verifyEmail: function(params) {
+        return $http.get('/auth/verify_email?token='+escape(params.token)+'&key='+escape(params.key));
       }
     };
   });

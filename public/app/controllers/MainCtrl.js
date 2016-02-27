@@ -22,6 +22,11 @@ app.config(function($stateProvider, $urlRouterProvider, $authProvider) {
             controller: 'SignupCtrl',
             templateUrl: 'app/views/signup.html'
         })
+        .state('verify_email', {
+            url: '/verify_email?token&key',
+            controller: 'VerifyEmailCtrl',
+            templateUrl: 'app/views/verify_email.html'
+        })
         .state('profile', {
             url: '/profile',
             controller: 'ProfileCtrl',

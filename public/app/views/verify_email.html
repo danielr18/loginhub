@@ -1,0 +1,30 @@
+<div class="section no-pad-bot" id="index-banner">
+  <div class="container">
+    <br>
+    <br>
+    <div class="row center">
+      <div class="col l6 m8 s10 offset-l3 offset-m2 offset-s1 card-panel grey lighten-4 login">
+        <div class="container">
+          <div ng-show="verification.status==200" class="row center">
+            <h5>Email Verified</h5>
+            <br>
+            <h6>Thank you for verifying your e-mail address. You can now login to your account.</h6>
+          </div>
+          <div ng-hide="verification.status==200">
+            <h5>Oops! Something failed</h5>
+            <br>
+            <h6>This link is not valid or is already expired. Login into your account to resend the verification email.</h6>
+          </div>
+          <div class="row center">
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row center">
+
+    </div>
+    <br>
+    <br>
+  </div>
+</div>
