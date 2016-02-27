@@ -22,7 +22,9 @@ var userSchema = new mongoose.Schema({
   },
   picture: String,
   facebook: String,
-  twitter: String
+  twitter: String,
+  verified: Boolean,
+  verifyKey: Number
 });
 
 //Saving.

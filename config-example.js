@@ -2,7 +2,8 @@
 module.exports = {
   // App Settings
   MONGO_URI: process.env.MONGO_URI || 'localhost',
-  TOKEN_SECRET: process.env.TOKEN_SECRET || 'YOUR SECRET',
+  TOKEN_SECRET: process.env.TOKEN_AUTH_SECRET || 'YOUR SECRET FOR AUTH TOKENS',
+  TOKEN_VERIFICATION_SECRET: process.env.TOKEN_VERIFICATION_SECRET || 'YOUR SECRET FOR VERIFICATION TOKENS',
 
   // OAuth 2.0
   FACEBOOK_SECRET: process.env.FACEBOOK_SECRET || 'YOUR_FACEBOOK_CLIENT_SECRET',
@@ -15,7 +16,7 @@ module.exports = {
   TWITTER_SECRET: process.env.TWITTER_SECRET || 'YOUR_TWITTER_SECRET',
 
   //Database
-  DATABASE_URL: "mongodb://user:pass@url:27017/database"
+  DATABASE_URL: "mongodb://user:pass@url:27017/database",
 
   //Mailing
   LOGINHUB_EMAIL: "GMAIL USERNAME",

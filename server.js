@@ -12,7 +12,7 @@ var authFacebook = require('./auth/facebook');
 var authLocal = require('./auth/local');
 var mongoose = require('mongoose');
 var moment = require('moment');
-var config = require('./config') //Rename config.example to config
+var config = require('./config'); //Rename config.example to config
 
 //Connection to database
 mongoose.connect(config.DATABASE_URL);
