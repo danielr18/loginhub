@@ -4,7 +4,6 @@ app.controller('ProfileCtrl', function($scope, $auth, Account) {
         Account.getProfile()
             .then(function(response) {
                 $scope.user = response.data;
-                console.log(response.data);
             })
             .catch(function(response) {
 

@@ -13,6 +13,8 @@
               <div class="col s8">
                 <h5>{{user.firstname}} {{user.lastname}}</h5>
                 <h6>{{user.email}}</h6>
+                <h6 ng-show="user.verified">You are verified</h6>
+                <h6 ng-hide="user.verified">You need to verify your email</h6>
               </div>
           </div>
           <div class="left-align">
