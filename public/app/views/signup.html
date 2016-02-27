@@ -29,7 +29,7 @@
             </div>
           </div>
           <div class="input-field col l8 m8 s12 offset-l2 offset-m2">
-            <input type="email" name="email" ng-model="user.email" ng-pattern="emailRegex" ng-class="{ 'invalid': signupForm.email.$invalid && signupForm.email.$dirty, 'valid': signupForm.email.$valid}" validate-email required>
+            <input type="email" name="email" ng-model="user.email" ng-class="{ 'invalid': signupForm.email.$invalid && signupForm.email.$dirty, 'valid': signupForm.email.$valid}" validate-email required>
             <label>Email</label>
             <div ng-if="signupForm.email.$dirty" class="form-error" ng-messages="signupForm.email.$error">
               <p ng-message="required">Your email is required.</p>
