@@ -40,7 +40,19 @@ localAuth.post("/signup", function(req, res) {
   }, function(err, existingUser) {
     if (existingUser) {
       return res.status(409).send({
-        message: 'Email is already taken'
+        message: "Email is already taken"
+      });
+    }
+    if(!/^[-a-z0-9~!$%^&*_=+}{\'?]+(\.[-a-z0-9~!$%^&*_=+}{\'?]+)*@([a-z0-9_][-a-z0-9_]*(\.[-a-z0-9_]+)*\.(aero|arpa|biz|com|coop|edu|gov|info|int|mil|museum|name|net|org|pro|travel|mobi|[a-z][a-z])|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,5})?$/i.test(req.body.email)) {
+      return res.status(422).send({
+        message: 'Invalid email',
+        error: "email"
+      });
+    }
+    if(!/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%]{10,}$/.test(req.body.password)) {
+      return res.status(422).send({
+        message: 'Invalid password',
+        error: "password"
       });
     }
     var user = new User({
@@ -64,6 +76,22 @@ localAuth.post("/signup", function(req, res) {
         name: req.body.firstname,
         email: req.body.email
       });
+    });
+  });
+});
+
+//Sign Up configuration.
+localAuth.post("/email_available", function(req, res) {
+  User.findOne({
+    email: req.body.email
+  }, function(err, existingUser) {
+    if (existingUser) {
+      return res.status(200).send({
+        taken: true
+      });
+    }
+    return res.status(200).send({
+      taken: false
     });
   });
 });

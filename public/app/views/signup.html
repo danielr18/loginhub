@@ -13,7 +13,7 @@
     <div class="row center">
       <div class="col l6 m8 s10 offset-l3 offset-m2 offset-s1 card-panel grey lighten-4 login">
         <h5>Sign Up</h5>
-        <form method="post" ng-submit="signup()" name="signupForm" novalidate>
+        <form method="post" ng-submit="signup(signupForm)" name="signupForm" novalidate>
           <div class="input-field col l4 m4 s12 offset-l2 offset-m2">
             <input type="text" name="firstname" ng-model="user.firstname" ng-class="{ 'invalid': signupForm.firstname.$invalid && signupForm.firstname.$dirty}" required>
             <label>First Name</label>
@@ -29,11 +29,12 @@
             </div>
           </div>
           <div class="input-field col l8 m8 s12 offset-l2 offset-m2">
-            <input type="email" name="email" ng-model="user.email" ng-pattern="emailRegex" ng-class="{ 'invalid': signupForm.email.$invalid && signupForm.email.$dirty, 'valid': signupForm.email.$valid}" required>
+            <input type="email" name="email" ng-model="user.email" ng-pattern="emailRegex" ng-class="{ 'invalid': signupForm.email.$invalid && signupForm.email.$dirty, 'valid': signupForm.email.$valid}" validate-email required>
             <label>Email</label>
             <div ng-if="signupForm.email.$dirty" class="form-error" ng-messages="signupForm.email.$error">
               <p ng-message="required">Your email is required.</p>
               <p ng-message="pattern">Your email address is invalid.</p>
+              <p ng-message="taken">This email address is already in use.</p>
             </div>
           </div>
           <div class="input-field col l8 m8 s12 offset-l2 offset-m2">
@@ -46,6 +47,7 @@
               <p ng-message="uppercase">Password must have at least 1 uppercase character.</p>
               <p ng-message="digit">Password must have at least 1 digit (0-9)</p>
               <p ng-message="maxlength">Password must have at most 128 characters.</p>
+              <p ng-message="pattern">Password is not valid.</p>
             </div>
           </div>
           <div class="input-field col l8 m8 s12 offset-l2 offset-m2">

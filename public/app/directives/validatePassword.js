@@ -53,6 +53,11 @@ app.directive('validatePassword', function() {
           ctrl.$setValidity('maxlength', true);
         }
 
+        if (/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%]{10,}$/.test(ngModelValue)) {
+          ctrl.$setValidity('invalid', true);
+        } else {
+          ctrl.$setValidity('invalid', false);
+        }
         // we need to return our ngModelValue, to be displayed to the user(value of the input)
         return ngModelValue;
       }
