@@ -15,11 +15,6 @@ var userSchema = new mongoose.Schema({
   },
   firstname: String,
   lastname: String,
-  address: String,
-  ID: {
-    type: Number,
-    unique: true
-  },
   picture: String,
   facebook: String,
   twitter: String,

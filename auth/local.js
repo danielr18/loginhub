@@ -60,20 +60,17 @@ localAuth.post("/signup", function(req, res) {
             lastname: req.body.lastname,
             email: req.body.email,
             password: req.body.password,
-            address: req.body.address,
-            verifyKey: Math.floor((Math.random() * 10E12) + 10E6),
-            ID: req.body.ID
+            verifyKey: Math.floor((Math.random() * 10E12) + 10E6)
         });
         user.save(function(err, result) {
             if (err) {
-                res.status(500).send({
+                return res.status(500).send({
                     message: err.message
                 });
             }
             res.send({
                 token: createJWT.auth(result)
             });
-            console.log(result);
             mailer.verificationEmail({
                 name: req.body.firstname,
                 email: req.body.email,
