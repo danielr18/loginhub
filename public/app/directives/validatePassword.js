@@ -41,7 +41,7 @@ app.directive('validatePassword', function() {
         // check if the length of our input is exactly 6 characters
         // if it is 6, set our custom `sixCharactersValidator` to valid/true
         // othwise set it to non-valid/false
-        if (ngModelValue.length >=10) {
+        if (ngModelValue.length >=8) {
           ctrl.$setValidity('minlength', true);
         } else {
           ctrl.$setValidity('minlength', false);
@@ -53,7 +53,7 @@ app.directive('validatePassword', function() {
           ctrl.$setValidity('maxlength', true);
         }
 
-        if (/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%]{10,}$/.test(ngModelValue)) {
+        if (/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%]{8,}$/.test(ngModelValue)) {
           ctrl.$setValidity('invalid', true);
         } else {
           ctrl.$setValidity('invalid', false);

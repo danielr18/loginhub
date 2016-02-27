@@ -49,7 +49,7 @@ localAuth.post("/signup", function(req, res) {
                 error: "email"
             });
         }
-        if (!/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%]{10,}$/.test(req.body.password)) {
+        if (!/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%]{8,}$/.test(req.body.password)) {
             return res.status(422).send({
                 message: 'Invalid password',
                 error: "password"
