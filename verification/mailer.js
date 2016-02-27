@@ -1,6 +1,6 @@
 var nodemailer = require('nodemailer');
-var config = require('./config');
-var generatedLink = require('./token');
+var config = require('../config');
+var generatedLink = require('../token');
 
 // create reusable transporter object using the default SMTP transport
 var transporter = nodemailer.createTransport('smtps://'+config.LOGINHUB_EMAIL+'%40gmail.com:' +config.LOGINGUB_EMAIL_PASSWORD+'@smtp.gmail.com');
