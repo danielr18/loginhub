@@ -1,6 +1,5 @@
 var nodemailer = require('nodemailer');
 var config = require('../config');
-var generatedLink = require('../token');
 
 // create reusable transporter object using the default SMTP transport
 var transporter = nodemailer.createTransport('smtps://'+config.LOGINHUB_EMAIL+'%40gmail.com:' +config.LOGINGUB_EMAIL_PASSWORD+'@smtp.gmail.com');
@@ -39,8 +38,7 @@ exports.passRecoveryEmail = function(data){
       from: 'LoginHub Team <homeboxhoteltest@gmail.com>', // sender address
       to: data.email, // list of receivers
       subject: 'Loginhub password recovery', // Subject line
-      text: 'Enter this link: ' + generatedLink, // plaintext body
-      html: '<b>Hello world</b>' // html body
+      html: 'Hi ' + data.name + ', you have requested a password recovery. To continue with the process, enter this link: <a href="http://localhost:8080/#/pass_recovery?token=' + escape(data.token) + "&key=" + escape(data.key) + '">Password Recovery</a>' // html body
   };
   // send mail with defined transport object
   transporter.sendMail(mailOptions, function(error, info){

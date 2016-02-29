@@ -8,6 +8,9 @@ app.factory('Account', function($http) {
       },
       verifyEmail: function(params) {
         return $http.get('/auth/verify_email?token='+escape(params.token)+'&key='+escape(params.key));
+      },
+      passwordRecovery: function(params) {
+        return $http.get('/auth/pass_recovery?token='+escape(params.token)+'&key='+escape(params.key));
       }
     };
   });
