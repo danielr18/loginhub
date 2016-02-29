@@ -1,0 +1,22 @@
+<div>
+              <form id="resetPasswordForm" novalidate="novalidate">
+                <div ng-controller="ResetPasswordCtrl">
+                    <div>
+                        <h3>Forgot Your Password?</h3>
+                    </div>
+                    <div>
+                        Please insert your email:
+                    </div>
+                    <di>
+                        <label>email</label>
+                        <input type="text" id="email" name="email" ng-model="resetPasswordEmail" />
+                    </div>
+                    <div>
+                        <button ng-click="resetPassword()">Reset</button>
+                    </div>
+                    <div>
+                        <a href="#/login">back</a>
+                    </div>
+                </div>
+              </form>
+            </div>

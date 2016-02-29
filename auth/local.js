@@ -136,4 +136,76 @@ localAuth.get("/verify_email/", function(req, res) {
     }
 });
 
+localAuth.post("/pass_recovery_req", function(req, res) {
+    User.findOne({
+        email: req.body.email
+    }, function(err, user) {
+        if (!user) {
+            return res.status(401).send({
+                message: 'Invalid email'
+            });
+        }
+        user.findOne(req.body.verified, function(err, isVerified) {
+            if (!isVerified) {
+                return res.status(401).send({
+                    message: 'User not verified'
+                });
+            }
+        user.recoveryKey: Math.floor((Math.random() * 10E12) + 10E6),
+        user.recovery: true;
+        mailer.passRecoveryEmail({
+              name: req.body.firstname,
+              email: req.body.email,
+              token: createJWT.recovery(result),
+              key: result.recoveryKey
+        });
+      });
+    });
+});
+
+localAuth.get("/pass_recovery_res", function(req, res) {
+    if (req.query.token) {
+        var payload = jwt.decode(req.query.token, config.TOKEN_PASSRECOVERY_SECRET);
+        if (moment().unix() < payload.exp) {
+            User.findById(payload.sub, function(err, user) {
+                if (!user) {
+                    return res.status(400).send({
+                        message: 'User not found'
+                    });
+                } else if (user.verifyKey == req.query.key) {
+                    user.verified = true;
+                    user.verifyKey = undefined;
+                    user.save(function(err, result) {
+                        return res.status(200).send({
+                            message: 'User verified'
+                        });
+                    });
+                } else {
+                    return res.status(404).send({
+                        message: 'Invalid verification key'
+                    });
+                }
+            });
+        } else {
+            return res.status(404).send({
+                message: 'Expired validation token'
+            });
+        }
+
+    } else {
+        return res.status(404).send({
+            message: 'No token provided'
+        });
+    }
+});
+
+
+
+
+
+
+
+
+
+
 module.exports = localAuth;

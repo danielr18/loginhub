@@ -31,7 +31,17 @@ app.config(function($stateProvider, $urlRouterProvider, $authProvider) {
             url: '/profile',
             controller: 'ProfileCtrl',
             templateUrl: 'app/views/profile.html'
-        });
+        })
+        .state('pass_recovery_req', {
+            url:'/pass_recovery_req',
+            controller: 'passRecoveryResCtrl',
+            templateUrl: 'app/views/pass_recovery_req'
+        })
+        .state('pass_recovery_res')
+            url: '/pass_recovery?token&key',
+            controller: 'passRecoveryResCtrl',
+            templateUrl: 'app/views/pass_recovery_res'
+      });
 
     $urlRouterProvider.otherwise('/');
 

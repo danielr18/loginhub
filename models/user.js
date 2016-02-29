@@ -19,7 +19,9 @@ var userSchema = new mongoose.Schema({
   facebook: String,
   twitter: String,
   verified: Boolean,
-  verifyKey: Number
+  verifyKey: Number,
+  recovery: Boolean,
+  recoveryKey: Number
 });
 
 //Saving.
