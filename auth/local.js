@@ -94,7 +94,7 @@ localAuth.post("/email_available", function(req, res) {
                 taken: true
             });
         }
-        return res.status(200).send({
+        return res.status(404).send({
             taken: false
         });
     });
@@ -106,7 +106,7 @@ localAuth.get("/verify_email/", function(req, res) {
         if (moment().unix() < payload.exp) {
             User.findById(payload.sub, function(err, user) {
                 if (!user) {
-                    return res.status(400).send({
+                    return res.status(404).send({
                         message: 'User not found'
                     });
                 } else if (user.verifyKey == req.query.key) {
@@ -118,7 +118,7 @@ localAuth.get("/verify_email/", function(req, res) {
                         });
                     });
                 } else {
-                    return res.status(404).send({
+                    return res.status(500).send({
                         message: 'Invalid verification key'
                     });
                 }
@@ -145,7 +145,7 @@ localAuth.post("/pass_recovery_req", function(req, res) {
                 message: 'Invalid email'
             });
         }
-        user.findOne(req.body.verified, function(err, isVerified) {
+        user.findOne(user.verified, function(err, isVerified) {
             if (!isVerified) {
                 return res.status(401).send({
                     message: 'User not verified'
