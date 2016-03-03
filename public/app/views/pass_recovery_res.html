@@ -12,12 +12,35 @@
     <br>
     <div class="row center">
       <div class="col l6 m8 s10 offset-l3 offset-m2 offset-s1 card-panel grey lighten-4 login">
-        <h5>Password Recovery</h5>
-        <form method="post" ng-submit="passwordRecovery(RecoveryForm)" name="RecoveryForm" novalidate>
+        <h5></h5>
+        <form method="post" ng-submit="signup(signupForm)" name="signupForm" novalidate>
+          <div class="input-field col l4 m4 s12 offset-l2 offset-m2">
+            <input type="text" name="firstname" ng-model="user.firstname" ng-class="{ 'invalid': signupForm.firstname.$invalid && signupForm.firstname.$dirty}" required>
+            <label>First Name</label>
+            <div ng-if="signupForm.firstname.$dirty" class="form-error" ng-messages="signupForm.firstname.$error">
+              <p ng-message="required">You must enter your name.</p>
+            </div>
+          </div>
+          <div class="input-field col l4 m4 s12">
+            <input type="text" name="lastname" ng-model="user.lastname" ng-class="{ 'invalid': signupForm.lastname.$invalid && signupForm.lastname.$dirty}" required>
+            <label>Last Name</label>
+            <div ng-if="signupForm.lastname.$dirty" class="form-error" ng-messages="signupForm.lastname.$error">
+              <p ng-message="required">You must enter your last name.</p>
+            </div>
+          </div>
           <div class="input-field col l8 m8 s12 offset-l2 offset-m2">
-            <input type="password" name="password" ng-model="user.password" ng-class="{ 'invalid': RecoveryForm.password.$invalid && RecoveryForm.password.$dirty, 'valid': RecoveryForm.password.$valid}" validate-password required>
+            <input type="email" name="email" ng-model="user.email" ng-class="{ 'invalid': signupForm.email.$invalid && signupForm.email.$dirty, 'valid': signupForm.email.$valid}" validate-email required>
+            <label>Email</label>
+            <div ng-if="signupForm.email.$dirty" class="form-error" ng-messages="signupForm.email.$error">
+              <p ng-message="required">Your email is required.</p>
+              <p ng-message="pattern">Your email address is invalid.</p>
+              <p ng-message="taken">This email address is already in use.</p>
+            </div>
+          </div>
+          <div class="input-field col l8 m8 s12 offset-l2 offset-m2">
+            <input type="password" name="password" ng-model="user.password" ng-class="{ 'invalid': signupForm.password.$invalid && signupForm.password.$dirty, 'valid': signupForm.password.$valid}" validate-password required>
             <label>Password</label>
-            <div ng-if="RecoveryForm.password.$dirty" class="form-error" ng-messages="RecoveryForm.password.$error">
+            <div ng-if="signupForm.password.$dirty" class="form-error" ng-messages="signupForm.password.$error">
               <p ng-message="required">Password is required.</p>
               <p ng-message="minlength">Password must have al least 8 characters.</p>
               <p ng-message="lowercase">Password must have at least 1 lowercase character.</p>
@@ -28,9 +51,26 @@
             </div>
           </div>
           <div class="input-field col l8 m8 s12 offset-l2 offset-m2">
-            <button class="login-button btn waves-effect waves-light z-depth-0" ng-disabled="RecoveryForm.$invalid" type="submit" name="action">Change Password</button>
+            <button class="login-button btn waves-effect waves-light z-depth-0" ng-disabled="signupForm.$invalid" type="submit" name="action">Sign Up</button>
           </div>
         </form>
+        <div class="input-field col s8 offset-s2">
+          <h6 class="center-align">OR</h6>
+        </div>
+        <div class="col l8 m8 s12 offset-l2 offset-m2">
+          <button class="login-button btn indigo waves-effect waves-light z-depth-0" type="submit" name="action" ng-click="authenticate('facebook')">
+            <span class="fa-stack fa-lg">
+                      <i class="fa fa-facebook fa-stack-1x"></i>
+                  </span> Sign Up with Facebook
+          </button>
+        </div>
+        <div class="col l8 m8 s12 offset-l2 offset-m2">
+          <button class="login-button oauth btn blue lighten-1 waves-effect waves-light z-depth-0" type="submit" name="action" ng-click="authenticate('twitter')">
+            <span class="fa-stack fa-lg">
+                      <i class="fa fa-twitter fa-stack-1x"></i>
+                  </span> Sign Up with Twitter
+          </button>
+        </div>
         <div class="row center">
 
         </div>

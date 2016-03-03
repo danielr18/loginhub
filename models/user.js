@@ -20,7 +20,6 @@ var userSchema = new mongoose.Schema({
   twitter: String,
   verified: Boolean,
   verifyKey: Number,
-  recovery: Boolean,
   recoveryKey: Number
 });
 

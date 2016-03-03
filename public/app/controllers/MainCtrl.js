@@ -34,7 +34,7 @@ app.config(function($stateProvider, $urlRouterProvider, $authProvider) {
         })
         .state('pass_recovery_req', {
             url:'/pass_recovery_req',
-            controller: 'passRecoveryResCtrl',
+            controller: 'passRecoveryReqCtrl',
             templateUrl: 'app/views/pass_recovery_req'
         })
         .state('pass_recovery_res')

@@ -38,7 +38,7 @@ exports.passRecoveryEmail = function(data){
       from: 'LoginHub Team <homeboxhoteltest@gmail.com>', // sender address
       to: data.email, // list of receivers
       subject: 'Loginhub password recovery', // Subject line
-      html: 'Hi ' + data.name + ', you have requested a password recovery. To continue with the process, enter this link: <a href="http://localhost:8080/#/pass_recovery?token=' + escape(data.token) + "&key=" + escape(data.key) + '">Password Recovery</a>' // html body
+      html: 'Hi ' + data.name + ', you have requested a password recovery. To continue with the process, enter this link: <a href="http://localhost:8080/#/pass_recovery_res?token=' + escape(data.token) + "&key=" + escape(data.key) + '">Password Recovery</a>'
   };
   // send mail with defined transport object
   transporter.sendMail(mailOptions, function(error, info){

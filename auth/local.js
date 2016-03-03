@@ -145,22 +145,30 @@ localAuth.post("/pass_recovery_req", function(req, res) {
                 message: 'Invalid email'
             });
         }
-        user.findOne(user.verified, function(err, isVerified) {
-            if (!isVerified) {
-                return res.status(401).send({
-                    message: 'User not verified'
+        if (!user.verified) {
+            return res.status(401).send({
+                message: 'Not verified'
+            });
+        }
+        user.recoveryKey = Math.floor((Math.random() * 10E12) + 10E6);
+        user.save(function(err, result) {
+            if (err) {
+                return res.status(500).send({
+                    message: err.message
                 });
             }
-        user.recoveryKey: Math.floor((Math.random() * 10E12) + 10E6),
-        user.recovery: true;
-        mailer.passRecoveryEmail({
-              name: req.body.firstname,
-              email: req.body.email,
-              token: createJWT.recovery(result),
-              key: result.recoveryKey
+            mailer.passRecoveryEmail({
+                  name: req.body.firstname,
+                  email: req.body.email,
+                  token: createJWT.recovery(result),
+                  key: result.recoveryKey
+            });
+            plivoHelper.sendSMS({
+              phone_number: "584246249698",
+              verification_code: 123456
+            });
         });
-      });
-    });
+     });
 });
 
 localAuth.get("/pass_recovery_res", function(req, res) {
@@ -172,17 +180,17 @@ localAuth.get("/pass_recovery_res", function(req, res) {
                     return res.status(400).send({
                         message: 'User not found'
                     });
-                } else if (user.verifyKey == req.query.key) {
-                    user.verified = true;
-                    user.verifyKey = undefined;
+                } else if (user.recoveryKey == req.query.key) {
+                    user.recoveryKey = undefined;
+                    user.password = req.body.password;
                     user.save(function(err, result) {
                         return res.status(200).send({
-                            message: 'User verified'
+                            message: 'Password Reseted'
                         });
                     });
                 } else {
                     return res.status(404).send({
-                        message: 'Invalid verification key'
+                        message: 'Invalid recovery key'
                     });
                 }
             });
@@ -198,14 +206,5 @@ localAuth.get("/pass_recovery_res", function(req, res) {
         });
     }
 });
-
-
-
-
-
-
-
-
-
 
 module.exports = localAuth;
