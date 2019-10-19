@@ -16,7 +16,7 @@
     "express": "^4.13.4",
     "jwt-simple": "^0.4.1",
     "moment": "^2.11.1",
-    "mongoose": "^4.3.7",
+    "mongoose": "^5.4.10",
     "morgan": "^1.6.1",
     "nodemailer": "~2.2.1",
     "path": "^0.12.7",
