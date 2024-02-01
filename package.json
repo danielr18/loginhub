@@ -18,7 +18,7 @@
     "moment": "^2.11.1",
     "mongoose": "^5.4.10",
     "morgan": "^1.6.1",
-    "nodemailer": "~2.2.1",
+    "nodemailer": "~6.9.9",
     "path": "^0.12.7",
     "plivo": "git://github.com/plivo/plivo-node.git",
     "qs": "^6.0.2",
